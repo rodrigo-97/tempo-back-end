@@ -16,4 +16,4 @@ module.exports = Produto = sequelize.define('produtos', {
   }
 })
 
- Produto.sync({ force: true })
+//  Produto.sync({ force: true })
