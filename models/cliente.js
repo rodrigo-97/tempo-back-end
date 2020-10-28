@@ -19,3 +19,5 @@ module.exports = Cliente = sequelize.define('clientes', {
     allowNull: false
   }
 })
+
+Cliente.sync({ force: true })
