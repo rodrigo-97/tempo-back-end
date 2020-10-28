@@ -10,40 +10,35 @@ rotas.post("/inserir-cliente", async (req, res) => {
     const { nome, telefone, dataNascimento, situacao} = req.body
 
     const resultado = inserir(nome, telefone, dataNascimento, situacao)
-    res.send(resultado)
+    res.status(200).send(resultado)
   }catch (err){
-    res.send(err)
+    res.status(400).send(err)
   }
 });
 
 rotas.put("/alterar-cliente", async (req, res) => {
   try {
-    const cliente = {
-      id: req.body.id,
-      nome: req.body.nome,
-      telefone: req.body.telefone,
-      dataNascimento: req.body.dataNascimento
-    }
+    const { id, nome, telefone, dataNascimento, situacao } =  req.body
 
-    const resultado = alterar(cliente.id ,cliente.nome, cliente.telefone, cliente.dataNascimento)
-    res.send(resultado)
+    const resultado = alterar(id, nome, telefone, dataNascimento, situacao)
+    res.status(200).send(resultado)
   }catch (err){
-    res.send(err)
+    res.status(400).send(err)
   }
 });
 
 rotas.get("/listar-clientes", async (req, res) => {
   const resultado = await listar()
-  res.send(resultado);
+  res.status(200).send(resultado);
 })
 
 rotas.delete("/remover-cliente", async (req, res) => {
   try {
     const id = req.body.id
     const resultado = remover(id)
-    res.send(resultado);
+    res.status(200).send(resultado);
   }catch(err){
-    res.send(err)
+    res.status(400).send(err)
   }
 })
 
